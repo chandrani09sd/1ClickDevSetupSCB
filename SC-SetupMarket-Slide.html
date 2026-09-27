@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SC-Setup | Market Setup Overview</title>
+  <style>
+    :root {
+      --bg: #eef4f8;
+      --surface: #ffffff;
+      --surface-soft: #f7fbfd;
+      --ink: #17323b;
+      --muted: #5e7682;
+      --brand: #00847f;
+      --brand-deep: #005f5c;
+      --brand-soft: #ebf9f8;
+      --accent: #1f3c44;
+      --warm: #f4fbfb;
+      --line: #d8e6ec;
+      --danger: #c84b43;
+      --danger-soft: #fff1ef;
+      --shadow: none;
+      --grid-gap: 16px;
+      --radius-xl: 28px;
+      --radius-lg: 18px;
+      --radius-md: 14px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: "Segoe UI", Inter, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(0,132,127,0.10), transparent 24%),
+        linear-gradient(180deg, #fbfdff 0%, var(--bg) 100%);
+      color: var(--ink);
+      line-height: 1.45;
+    }
+
+    .page {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #083f46 0%, #006d68 58%, #007f78 100%);
+      color: #fff;
+      border-radius: var(--radius-xl);
+      padding: 30px 32px;
+      box-shadow: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -80px;
+      top: -80px;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.18), transparent 68%);
+    }
+
+    .hero-top {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--grid-gap);
+      align-items: flex-start;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2.4px;
+      text-transform: uppercase;
+      color: #bdf2ef;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 40px;
+      line-height: 1.05;
+      letter-spacing: -1px;
+      max-width: 760px;
+    }
+
+    .hero-subtitle {
+      margin-top: 12px;
+      max-width: 820px;
+      font-size: 16px;
+      color: #def8f6;
+    }
+
+    .hero-aside {
+      min-width: 250px;
+      max-width: 290px;
+      background: rgba(255,255,255,0.11);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 18px;
+      padding: 16px 18px;
+      backdrop-filter: blur(6px);
+    }
+
+    .hero-aside .title {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: #c8f6f3;
+      margin-bottom: 8px;
+    }
+
+    .hero-aside p {
+      margin: 0;
+      font-size: 14px;
+      color: #f4fffe;
+      line-height: 1.5;
+    }
+
+    .impact-strip {
+      margin-block: var(--grid-gap);
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--grid-gap);
+      position: relative;
+      z-index: 1;
+    }
+
+    .impact-card {
+      background: rgba(255,255,255,0.13);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 18px;
+      padding: 16px;
+      min-height: 106px;
+    }
+
+    .impact-card .big {
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .impact-card .small {
+      font-size: 12px;
+      color: #dff8f6;
+      line-height: 1.38;
+    }
+
+    .grid {
+      display: grid;
+      gap: var(--grid-gap);
+      margin-block: var(--grid-gap);
+    }
+
+    .grid-2 {
+      grid-template-columns: 1.05fr 0.95fr;
+    }
+
+    .grid-3 {
+      grid-template-columns: 0.9fr 1.2fr 0.9fr;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: none;
+      padding: 22px;
+    }
+
+    .page > article.card + article.card,
+    .page > section.card + section.card {
+      margin-top: var(--grid-gap);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--grid-gap);
+      margin-bottom: var(--grid-gap);
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: 22px;
+      letter-spacing: -0.4px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--brand-soft);
+      border: 1px solid #caece9;
+      color: var(--brand-deep);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .list {
+      display: grid;
+      gap: var(--grid-gap);
+    }
+
+    .list-item,
+    .item {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: var(--grid-gap);
+      align-items: start;
+    }
+
+    .icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 9px;
+      display: grid;
+      place-items: center;
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--brand-deep);
+      background: var(--brand-soft);
+      border: 1px solid #cce8e5;
+    }
+
+    .icon.alert {
+      color: #9a352f;
+      background: var(--danger-soft);
+      border-color: #f3d2ce;
+    }
+
+    .list-item p,
+    .item p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .list-item strong,
+    .item strong { color: var(--ink); }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--grid-gap);
+    }
+
+    .feature {
+      background: linear-gradient(180deg, #fcfefe 0%, #f3fbfb 100%);
+      border: 1px solid #d7ecea;
+      border-left: 4px solid var(--brand);
+      border-radius: 12px;
+      padding: 12px 12px 11px;
+    }
+
+    .feature h3 {
+      margin: 0 0 4px;
+      font-size: 14px;
+      color: var(--brand-deep);
+    }
+
+    .feature p {
+      margin: 0;
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .benefits {
+      display: grid;
+      gap: var(--grid-gap);
+    }
+
+    .benefit {
+      display: grid;
+      grid-template-columns: 18px 1fr;
+      gap: var(--grid-gap);
+      align-items: start;
+    }
+
+    .check {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--brand);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      margin-top: 1px;
+    }
+
+    .benefit p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: var(--grid-gap);
+    }
+
+    .step {
+      border: 1px solid var(--line);
+      background: var(--surface-soft);
+      border-radius: 16px;
+      padding: 14px;
+      min-width: 0;
+    }
+
+    .step-no {
+      width: 34px;
+      height: 34px;
+      border-radius: 11px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--brand), var(--brand-deep));
+      color: #fff;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .step h3 {
+      margin: 0 0 6px;
+      font-size: 15px;
+    }
+
+    .step p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .step code {
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    .triple {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--grid-gap);
+    }
+
+    .mini {
+      border: 1px solid var(--line);
+      background: #fbfdff;
+      border-radius: 15px;
+      padding: 16px;
+    }
+
+    .mini h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+
+    .bullets {
+      display: grid;
+      gap: 8px;
+    }
+
+    .bullet {
+      display: grid;
+      grid-template-columns: 18px 1fr;
+      gap: 8px;
+      align-items: start;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 1px solid #d0e8e6;
+      background: var(--brand-soft);
+      color: var(--brand-deep);
+      display: grid;
+      place-items: center;
+      font-size: 12px;
+      font-weight: 800;
+      margin-top: 1px;
+    }
+
+    .pill-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--grid-gap);
+    }
+
+    .pill {
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #f9fcfe;
+      font-size: 13px;
+      color: var(--ink);
+    }
+
+    .proof-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--grid-gap);
+      margin-block: var(--grid-gap);
+      align-items: stretch;
+    }
+
+    .tag,
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--brand-soft);
+      border: 1px solid #caece9;
+      color: var(--brand-deep);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .proof {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: linear-gradient(180deg, #fff 0%, #f8fbfd 100%);
+      padding: 14px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      gap: 4px;
+    }
+
+    .proof .value {
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--brand-deep);
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .proof .label {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 12px 10px;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      font-size: 13px;
+    }
+
+    th {
+      background: #f1f8fb;
+      color: var(--brand-deep);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      font-size: 12px;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid #caece9;
+      background: var(--brand-soft);
+      color: var(--brand-deep);
+      font-size: 11px;
+      font-weight: 800;
+      margin-right: 6px;
+      margin-bottom: 4px;
+    }
+
+    .footer {
+      margin-top: 18px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      padding-bottom: 8px;
+    }
+
+    code {
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 0.95em;
+    }
+
+    @media (max-width: 1200px) {
+      .impact-strip,
+      .proof-strip,
+      .steps,
+      .triple,
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .hero-top {
+        flex-direction: column;
+      }
+      .hero-aside {
+        max-width: none;
+      }
+    }
+
+    @media (max-width: 820px) {
+      .page { padding: 14px; }
+      .hero { padding: 22px 18px; }
+      h1 { font-size: 30px; }
+      .impact-strip,
+      .proof-strip,
+      .steps,
+      .triple,
+      .grid-2,
+      .grid-3,
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+      .section-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <section class="hero">
+      <div class="hero-top">
+        <div>
+          <div class="eyebrow">Local Dev Automation</div>
+          <h1>SC-Setup | local setup for iBanking and adjacent applications</h1>
+          <div class="hero-subtitle">
+            A Spring Boot + Groovy setup utility that allows to switch between SG, MY, IN, HK or any Market × Environment with a single parameter change
+          </div>
+        </div>
+        <div class="hero-aside">
+          <div class="title">Summary</div>
+          <p>
+            Built to shorten onboarding, reduce setup variance, and give teams
+            a consistent local starting point across markets.
+          </p>
+        </div>
+      </div>
+
+      <div class="impact-strip">
+        <div class="impact-card">
+          <div class="big">~500</div>
+          <div class="small">Market-specific repositories and setup combinations covered across the broader landscape</div>
+        </div>
+        <div class="impact-card">
+          <div class="big">2–3 weeks → 1 Day</div>
+          <div class="small">New developer onboarding shifted from prolonged setup to earlier productivity</div>
+        </div>
+        <div class="impact-card">
+          <div class="big">3 days → &lt; 1 hr</div>
+          <div class="small">Experienced developers can rebuild environments dramatically faster</div>
+        </div>
+        <div class="impact-card">
+          <div class="big">20–30</div>
+          <div class="small">Estimated developer-days saved per year through repeatable automation</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid grid-3">
+      <article class="card">
+        <div class="section-head">
+          <h2>Why it matters</h2>
+          <span class="tag">Problem solved</span>
+        </div>
+        <div class="list">
+          <div class="list-item">
+            <div class="icon alert">~</div>
+            <p><strong>Each market has its own setup pattern</strong> across runtime, configuration, certificates, and connectivity.</p>
+          </div>
+          <div class="list-item">
+            <div class="icon alert">×</div>
+            <p><strong>Manual rebuilds are slow and inconsistent</strong> when developers repeat the same setup steps by hand.</p>
+          </div>
+          <div class="list-item">
+            <div class="icon alert">!</div>
+            <p><strong>The riskiest work sits in configuration and startup wiring</strong> — exactly where automation adds the most value.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="section-head">
+          <h2>What SC-Setup automates</h2>
+          <span class="tag">End-to-end flow</span>
+        </div>
+        <div class="feature-grid">
+          <div class="feature">
+            <h3>🔐 Certificates</h3>
+            <p>Installs trust material and imports application certificates when required.</p>
+          </div>
+          <div class="feature">
+            <h3>📁 Git checkout & build</h3>
+            <p>Clones market repositories, selects branches, and can trigger local builds.</p>
+          </div>
+          <div class="feature">
+            <h3>⚙ Config generation</h3>
+            <p>Generates local files, Java options, and application configuration from SCM payloads.</p>
+          </div>
+          <div class="feature">
+            <h3>🔗 Environment wiring</h3>
+            <p>Applies environment URLs, keystores, truststores, and market-specific overrides.</p>
+          </div>
+          <div class="feature">
+            <h3>☕ Runtime bootstrap</h3>
+            <p>Downloads or reuses JDK, Maven, and Tomcat from existing local caches.</p>
+          </div>
+          <div class="feature">
+            <h3>🐱 Tomcat preparation</h3>
+            <p>Prepares startup scripts, context files, logging configuration, and runner assets.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="section-head">
+          <h2>Benefits</h2>
+          <span class="tag">Business + engineering</span>
+        </div>
+        <div class="benefits">
+          <div class="benefit"><div class="check">✓</div><p><strong>Faster onboarding</strong> with less reliance on tribal knowledge</p></div>
+          <div class="benefit"><div class="check">✓</div><p><strong>More consistent local environments</strong> across teams and markets</p></div>
+          <div class="benefit"><div class="check">✓</div><p><strong>Lower setup risk</strong> by automating fragile configuration tasks</p></div>
+          <div class="benefit"><div class="check">✓</div><p><strong>Easier market rollout</strong> through reusable installer profiles</p></div>
+        </div>
+      </article>
+    </section>
+
+    <article class="card">
+      <div class="section-head">
+        <h2>How the runtime flow works</h2>
+        <span class="tag">Technical overview</span>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-no">1</div>
+          <h3>Load installer profile</h3>
+          <p>Read the selected Groovy profile and load its setup rules, runtime settings, and lifecycle actions.</p>
+        </div>
+        <div class="step">
+          <div class="step-no">2</div>
+          <h3>Prepare SCM trust</h3>
+          <p>Fetch the SCM Tool certificates and install them into the local JDK trust store so the app can connect securely.</p>
+        </div>
+        <div class="step">
+          <div class="step-no">3</div>
+          <h3>Prepare tools</h3>
+          <p>Download or reuse JDK, Tomcat, and Maven, then prepare the local runtime folders.</p>
+        </div>
+        <div class="step">
+          <div class="step-no">4</div>
+          <h3>Pull SCM configuration</h3>
+          <p>Download secrets and config maps, decode them, and turn them into local runtime inputs.</p>
+        </div>
+        <div class="step">
+          <div class="step-no">5</div>
+          <h3>Generate local startup</h3>
+          <p>Create the scripts, properties, context files, and logging overlays needed to run locally.</p>
+        </div>
+      </div>
+    </article>
+
+      <article class="card">
+        <div class="section-head">
+          <h2>Capabilities verified in source</h2>
+          <span class="tag">Technical credibility</span>
+        </div>
+        <div class="pill-grid">
+          <div class="pill">Profile-driven installation</div>
+          <div class="pill">SCM first-time trust setup</div>
+          <div class="pill">PAC / proxy support</div>
+          <div class="pill">Git clone with branch selection</div>
+          <div class="pill">JDK / Tomcat / Maven reuse</div>
+          <div class="pill">Secrets + config download</div>
+          <div class="pill">Certificate import</div>
+          <div class="pill">Tomcat configuration</div>
+          <div class="pill">Property and XML overrides</div>
+        </div>
+      </article>
+
+    <section class="grid grid-2">
+      <article class="card">
+        <div class="section-head">
+          <h2>What gets produced locally</h2>
+          <span class="chip">Developer-ready outputs</span>
+        </div>
+        <div class="list">
+          <div class="item">
+            <div class="icon">📄</div>
+            <p><strong>Startup scripts</strong> with Java options, debug settings, and market-specific runtime values.</p>
+          </div>
+          <div class="item">
+            <div class="icon">🧩</div>
+            <p><strong>Tomcat runtime wiring</strong> prepared so the app starts the same way every time, with the right deployment and runtime options already in place.</p>
+          </div>
+          <div class="item">
+            <div class="icon">🌐</div>
+            <p><strong>Context and deployment files</strong> pointing the local container to the right application artifact.</p>
+          </div>
+          <div class="item">
+            <div class="icon">🔐</div>
+            <p><strong>Local config and certificates</strong> populated from SCM payloads and trust material.</p>
+          </div>
+          <div class="item">
+            <div class="icon">🪵</div>
+            <p><strong>Logging overlays</strong> that make local troubleshooting easier and more consistent.</p>
+          </div>
+        </div>
+        <p style="margin: 14px 0 0; font-size: 13px; color: var(--muted);">
+          One extra advantage is that Tomcat can run outside IntelliJ, which keeps the startup path independent from IDE-specific settings, makes the setup easier to reproduce on another machine, and is closer to real container-style startup.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="section-head">
+          <h2>Coverage matrix</h2>
+          <span class="tag">Proof</span>
+        </div>
+
+        <div class="proof-strip">
+          <div class="proof">
+            <div class="value">8</div>
+            <div class="label">Profiles</div>
+          </div>
+          <div class="proof">
+            <div class="value">6</div>
+            <div class="label">E2E tests</div>
+          </div>
+          <div class="proof">
+            <div class="value">JDK 8 / 17</div>
+            <div class="label">Runtime variants</div>
+          </div>
+          <div class="proof">
+            <div class="value">Tomcat 9 / 10</div>
+            <div class="label">Container variants</div>
+          </div>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="mini">
+            <h3>Shipped profiles</h3>
+            <div class="pill-grid">
+              <div class="pill">14550 · AE / AF / IN FOA</div>
+              <div class="pill">14985 · SG / MY / HK FOA</div>
+              <div class="pill">33510 · PK BSOI</div>
+              <div class="pill">50475 · CSL Loans</div>
+            </div>
+          </div>
+          <div class="mini">
+            <h3>Validation scope</h3>
+            <div class="pill-grid">
+              <div class="pill">Generated startup outputs</div>
+              <div class="pill">Script and config fixtures</div>
+              <div class="pill">Installer profile coverage</div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+
+    <section class="card">
+      <div class="section-head">
+        <h2>Ask / Next Steps</h2>
+        <span class="tag">Action plan</span>
+      </div>
+      <div class="list">
+        <div class="list-item">
+          <div class="icon">1</div>
+          <p><strong>Adopt SC-Setup as the default onboarding path</strong> for local environment setup.</p>
+        </div>
+        <div class="list-item">
+          <div class="icon">2</div>
+          <p>Extend SC-Setup with <strong>AI-assisted automation</strong> and adjacent tools to reduce remaining manual steps in the setup flow.</p>
+        </div>
+        <div class="list-item">
+          <div class="icon">3</div>
+          <p><strong>Extend the model to remaining markets and app types</strong> using the same profile-driven approach.</p>
+        </div>
+        <div class="list-item">
+          <div class="icon">4</div>
+          <p>Assign<strong> maintenance ownership</strong> so the framework stays current, reliable, and easy to evolve.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      <strong>SC-Setup market setup overview</strong> · combining the strongest business, technical, and delivery messaging from the available slide variants · September 2026
+    </div>
+  </div>
+</body>
+</html>
+
+
